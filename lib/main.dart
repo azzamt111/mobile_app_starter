@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mobile_starter/feature/presentation/screens/service/service_test_screen.dart';
 
 void main() async {

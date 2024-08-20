@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mobile_starter/feature/presentation/constants/functions.dart';
 import 'package:mobile_starter/feature/presentation/constants/text_styles.dart';
 
 class Header extends StatelessWidget {
