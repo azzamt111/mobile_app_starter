@@ -7,31 +7,15 @@ part of 'task.dart';
 // **************************************************************************
 
 Task _$TaskFromJson(Map<String, dynamic> json) => Task(
-      id: (json['ID'] as num?)?.toInt(),
+      id: (json['id'] as num?)?.toInt(),
+      completed: json['completed'] as bool?,
       title: json['title'] as String?,
-      priority: json['priority'] as String?,
-      deadline: json['deadline'] as String?,
-      done: json['done'] as bool?,
-      createdAt: json['CreatedAt'] == null
-          ? null
-          : DateTime.parse(json['CreatedAt'] as String),
-      updatedAt: json['UpdatedAt'] == null
-          ? null
-          : DateTime.parse(json['UpdatedAt'] as String),
-      deletedAt: json['DeletedAt'] == null
-          ? null
-          : DateTime.parse(json['DeletedAt'] as String),
-      archived: json['archived'] as bool?,
+      userId: (json['userId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
-      'ID': instance.id,
+      'id': instance.id,
       'title': instance.title,
-      'priority': instance.priority,
-      'deadline': instance.deadline,
-      'done': instance.done,
-      'CreatedAt': instance.createdAt?.toIso8601String(),
-      'UpdatedAt': instance.updatedAt?.toIso8601String(),
-      'DeletedAt': instance.deletedAt?.toIso8601String(),
-      'archived': instance.archived,
+      'completed': instance.completed,
+      'userId': instance.userId,
     };

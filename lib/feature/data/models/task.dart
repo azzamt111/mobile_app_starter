@@ -5,35 +5,20 @@ part 'task.g.dart';
 
 @JsonSerializable()
 class Task {
-  @JsonKey(name:'ID')
+  @JsonKey(name:'id')
   final int? id;
   @JsonKey(name:'title')
   final String? title;
-  @JsonKey(name:'priority')
-  final String? priority;
-  @JsonKey(name:'deadline')
-  final String? deadline;
-  @JsonKey(name:'done')
-  final bool? done;
-  @JsonKey(name:'CreatedAt')
-  final DateTime? createdAt;
-  @JsonKey(name:'UpdatedAt')
-  final DateTime? updatedAt;
-  @JsonKey(name: 'DeletedAt')
-  final DateTime? deletedAt;
-  @JsonKey(name:'archived')
-  final bool? archived;
+  @JsonKey(name: 'completed')
+  final bool? completed;
+  @JsonKey(name: 'userId')
+  final int? userId;
 
   Task({
       this.id,
+      this.completed,
       this.title,
-      this.priority,
-      this.deadline,
-      this.done,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt,
-      this.archived
+      this.userId
       });
 
   factory Task.fromJson(final Map<String, dynamic> json) {

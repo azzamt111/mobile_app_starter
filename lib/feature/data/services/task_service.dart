@@ -1,16 +1,19 @@
 import 'package:chopper/chopper.dart';
+import 'package:mobile_starter/feature/data/services/interceptors/request_interceptor.dart';
+import 'package:mobile_starter/feature/data/services/interceptors/response_interceptor.dart';
+import 'package:mobile_starter/feature/data/config/config.dart';
 import 'package:mobile_starter/feature/data/models/task.dart';
 
 part 'task_service.chopper.dart';
 
-@ChopperApi(baseUrl: '/tasks')
+@ChopperApi(baseUrl: '/todos')
 abstract class TaskService extends ChopperService {
 
-  @Get(path: '/')
-  Future<Response<List>> getTasks({
+  @Get(path: '')
+  Future<Response<List>> getTasks(
     @Query('sort') String? sort,          // Example: 'createdAt', '-priority'
     @Query('filter') String? filter,      // Example: 'priority:high'
-  });
+  );
 
   @Get(path: '/{id}')
   Future<Response> getTask(
@@ -33,10 +36,14 @@ abstract class TaskService extends ChopperService {
 
   static TaskService create() {
     final client = ChopperClient(
-      baseUrl: Uri.parse('https://your-api.com'),
+      baseUrl: Uri.parse(Config.apiUrl),
       services: [_$TaskService()],
-      converter: JsonConverter(),
-      errorConverter: JsonConverter(),
+      converter: const JsonConverter(),
+      errorConverter: const JsonConverter(),
+      interceptors: [
+        RequestInterceptor(),
+        ResponseInterceptor()
+      ],
     );
     return _$TaskService(client);
   }

@@ -1,3 +1,3 @@
 class Config {
-  static const String apiUrl = 'https://api.your-url.com/3';
+  static const String apiUrl = 'https://jsonplaceholder.typicode.com';
 }

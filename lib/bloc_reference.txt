@@ -1,0 +1,38 @@
+Bloc Builder Example:
+
+BlocBuilder<TaskBloc, TaskState>(
+                builder: (context, state) {
+                  if (state is TaskLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is TaskLoaded) {
+                    return ListView.builder(
+                      itemCount: state.tasks.length,
+                      itemBuilder: (context, index) {
+                        final task = state.tasks[index];
+                        return ListTile(
+                          title: Text(task.title),
+                          subtitle: Text('ID: ${task.id}'),
+                        );
+                      },
+                    );
+                  } else if (state is TaskError) {
+                    return Center(child: Text('Error: ${state.message}'));
+                  } else {
+                    return const Center(child: Text('No tasks available.'));
+                  }
+                },
+              ),
+            ),
+
+
+Bloc Listener Example:
+
+BlocListener<TaskBloc, TaskState>(
+        listener: (context, state) {
+          if (state is TaskLoadedState) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TaskDisplayScreen(tasks: state.tasks),
+              ),
+            );

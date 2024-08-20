@@ -18,11 +18,11 @@ final class _$TaskService extends TaskService {
   final Type definitionType = TaskService;
 
   @override
-  Future<Response<List<dynamic>>> getTasks({
+  Future<Response<List<dynamic>>> getTasks(
     String? sort,
     String? filter,
-  }) {
-    final Uri $url = Uri.parse('/tasks/');
+  ) {
+    final Uri $url = Uri.parse('/todos');
     final Map<String, dynamic> $params = <String, dynamic>{
       'sort': sort,
       'filter': filter,
@@ -42,7 +42,7 @@ final class _$TaskService extends TaskService {
     String? sort,
     String? filter,
   }) {
-    final Uri $url = Uri.parse('/tasks/${id}');
+    final Uri $url = Uri.parse('/todos/${id}');
     final Map<String, dynamic> $params = <String, dynamic>{
       'sort': sort,
       'filter': filter,
@@ -58,7 +58,7 @@ final class _$TaskService extends TaskService {
 
   @override
   Future<Response<dynamic>> createTask(Task task) {
-    final Uri $url = Uri.parse('/tasks/');
+    final Uri $url = Uri.parse('/todos/');
     final $body = task;
     final Request $request = Request(
       'POST',
@@ -74,7 +74,7 @@ final class _$TaskService extends TaskService {
     int id,
     Task task,
   ) {
-    final Uri $url = Uri.parse('/tasks/${id}');
+    final Uri $url = Uri.parse('/todos/${id}');
     final $body = task;
     final Request $request = Request(
       'PUT',
@@ -87,7 +87,7 @@ final class _$TaskService extends TaskService {
 
   @override
   Future<Response<void>> deleteTask(int id) {
-    final Uri $url = Uri.parse('/tasks/${id}');
+    final Uri $url = Uri.parse('/todos/${id}');
     final Request $request = Request(
       'DELETE',
       $url,
@@ -98,7 +98,7 @@ final class _$TaskService extends TaskService {
 
   @override
   Future<Response<dynamic>> archiveTask(int id) {
-    final Uri $url = Uri.parse('/tasks/${id}/archive');
+    final Uri $url = Uri.parse('/todos/${id}/archive');
     final Request $request = Request(
       'PUT',
       $url,
